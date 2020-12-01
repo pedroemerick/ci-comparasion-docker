@@ -1,0 +1,9 @@
+dist: trusty
+
+jobs:
+  include:
+    - stage: Build and Push Docker Image
+      script:
+      - echo "$DOCKER_HUB_ACCESS_TOKEN" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
+      - docker build -t $DOCKER_HUB_USERNAME/ci-comparasion:travis-ci .
+      - docker push $DOCKER_HUB_USERNAME/ci-comparasion:travis-ci
