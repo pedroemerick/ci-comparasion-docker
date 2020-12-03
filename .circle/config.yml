@@ -1,0 +1,17 @@
+version: 2
+
+jobs:
+  docker-build-push-image:
+    machine:
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Login to Docker Hub
+          command: echo "$DOCKER_HUB_ACCESS_TOKEN" | docker login --username $DOCKER_HUB_USERNAME --password-stdin
+      - run:
+          name: Build and push
+          command: docker build -t $DOCKER_HUB_USERNAME/ci-comparasion:circle-ci .
+      - run:
+          name: Push
+          command: docker push $DOCKER_HUB_USERNAME/ci-comparasion:circle-ci
