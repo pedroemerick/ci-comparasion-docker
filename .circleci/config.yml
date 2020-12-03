@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  docker-build-push-image:
+  build:
     machine:
       docker_layer_caching: true
     steps:
