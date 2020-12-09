@@ -1,3 +1,4 @@
 Pipeline #1
 Pipeline #2
 Pipeline #3
+Pipeline #{4..10}
